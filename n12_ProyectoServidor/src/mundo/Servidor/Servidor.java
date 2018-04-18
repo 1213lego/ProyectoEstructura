@@ -62,10 +62,13 @@ public class Servidor
 	public static void main(String[] args) 
 	{
 		JOptionPane.showMessageDialog(null,"server");
-		try {
+		try 
+		{
 			Servidor server= new Servidor();
 			server.recibirCliente();
-		} catch (Exception e) {
+		}
+		catch (Exception e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

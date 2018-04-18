@@ -32,7 +32,6 @@ public class SocketCliente
 		FileInputStream archivo= new FileInputStream("data/servidor.properties");
 		Properties prop;
 		
-		///CLASE
 		prop = new Properties();
 		prop.load(archivo);
 		puerto= Integer.parseInt(prop.getProperty("puerto"));
