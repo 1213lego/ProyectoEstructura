@@ -52,11 +52,16 @@ public class ServidorHilo extends Thread
 				if(linea.substring(0, 6).equals(CONSULTA))
 				{
 					ResultSet rs= conexionDB.ejecutaConsulta(linea);
+					MyList<IDto> lista= new MyList<IDto>();
 					if(rs!=null)
 					{
-						MyList<IDto> lista= ReflectionDTO.listar(rs);
+						lista= ReflectionDTO.listar(rs);
 						out.writeObject(lista);
-					}			
+					}
+					else
+					{
+						out.writeObject(lista);
+					}
 				}
 				else // en caso de una actualizacion
 				{

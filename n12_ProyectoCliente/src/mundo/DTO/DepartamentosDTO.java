@@ -54,7 +54,8 @@ public class DepartamentosDTO implements IDto , Serializable
 	@Override
 	public String actualizar() 
 	{
-		return "UPDATE DEPARTAMENTOS SET CODIGO = "+ codigo + ", NOMBRE = '"+nombre.trim()+"' WHERE CODIGO = "+codigo;
+		return "UPDATE DEPARTAMENTOS a SET  a.CODIGO =" + codigo + " ,  a.NOMBRE = '" + nombre.trim()+ " ' WHERE a.CODIGO ="+  codigo;
+
 	}
 
 	@Override
@@ -70,7 +71,7 @@ public class DepartamentosDTO implements IDto , Serializable
 	}
 
 	@Override
-	public String consultarPorID() 
+	public String consultarPk() 
 	{
 		return "select * from DEPARTAMENTOS WHERE CODIGO = "+codigo;
 	}

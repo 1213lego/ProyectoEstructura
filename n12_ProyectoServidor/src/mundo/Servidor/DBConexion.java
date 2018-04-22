@@ -68,7 +68,7 @@ public class DBConexion
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			rs=null;
 		}
 	
 		return rs;
@@ -87,6 +87,10 @@ public class DBConexion
 		{
 			st = con.createStatement();
 			filas = st.executeUpdate(instruccionSql);
+			if(filas==0)
+			{
+				return false;
+			}
 			return true;
 		} 
 		catch (SQLException e)

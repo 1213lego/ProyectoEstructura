@@ -15,28 +15,46 @@ public class Controlador
 {
 	private DepartamentoFacade df;
 	private SocketCliente sc;
-	public Controlador() throws UnknownHostException, IOException 
+	public Controlador() throws UnknownHostException, IOException, InstantiationException, IllegalAccessException 
 	{
 		sc=new SocketCliente();
-		df= new DepartamentoFacade();
+		df= new DepartamentoFacade(sc);
 	}
-	public void elimnarDpt() throws InstantiationException, IllegalAccessException
+	public boolean elimnarDpt() throws InstantiationException, IllegalAccessException
 	{
 		DepartamentosDTO ss= new DepartamentosDTO(16, "Cundinamarca");
-		df.eliminar(sc, ss);
+		return df.eliminar(ss);
 	}
 	public MyList<IDto> consultarTodosDpt ()
 	{
 		DepartamentosDTO dpt= new DepartamentosDTO();
-		MyList<IDto> result= df.consultarTodos(sc,dpt );
+		MyList<IDto> result= df.consultarTodos(dpt);
 		return result;
+	}
+	public IDto consultarpoPk()
+	{
+		DepartamentosDTO ss= new DepartamentosDTO(38, "Cundinamarca");
+		return df.consultarPk(ss);
+	}
+	public boolean insertar()
+	{
+		DepartamentosDTO dpt= new DepartamentosDTO(54, "nuevoo");
+		return df.insertar(dpt);
+	}
+	public boolean actulizar()
+	{
+		DepartamentosDTO dpt= new DepartamentosDTO(15, "update44");
+		return df.actualizar(dpt);
 	}
 	public static void main(String[] args) 
 	{
 		try 
 		{
 			Controlador ss= new Controlador();
-			ss.elimnarDpt();
+			System.out.println("eliminado: " + ss.elimnarDpt());
+			System.out.println("Insertanto: " + ss.insertar());
+			System.out.println("consultando por pk" + ss.consultarpoPk());
+			System.out.println("Actualizando"+ ss.actulizar());
 			MyList<IDto>  lista= ss.consultarTodosDpt();
 			Iterator<IDto> iter= lista.iterator();
 			while(iter.hasNext())

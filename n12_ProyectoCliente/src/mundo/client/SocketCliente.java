@@ -49,7 +49,7 @@ public class SocketCliente
 		try 
 		{
 			out.writeObject(consulta);
-			result=(MyList<IDto>) in.readObject();
+			result=(MyList<IDto>) in.readObject();			
 		} 
 		catch (IOException e) 
 		{
@@ -61,7 +61,6 @@ public class SocketCliente
 		}
 		return result;
 	}
-	
 	public boolean ejecutaActualizacion(String instruccion)
 	{
 		boolean result=false;

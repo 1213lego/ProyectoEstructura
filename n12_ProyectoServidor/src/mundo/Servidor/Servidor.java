@@ -42,7 +42,7 @@ public class Servidor
 		{
 			Socket canal= server.accept();
 			ServidorHilo cliente= new ServidorHilo(canal, con );
-			cliente.run();
+			cliente.start();
 		}
 	}
 	
