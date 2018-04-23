@@ -39,7 +39,6 @@ public class SocketCliente
 		canal= new Socket(ip,puerto);
 		out= new ObjectOutputStream(canal.getOutputStream());
 		in= new ObjectInputStream(canal.getInputStream());
-		
 	}
 	
 	public MyList<IDto> ejecutaConsulta(String instruccion)
@@ -90,7 +89,7 @@ public class SocketCliente
 	public static void main(String[] args) 
 	{
 		
-			JOptionPane.showMessageDialog(null,"Inciando cliente");
+			JOptionPane.showMessageDialog(null,"Iniciando cliente");
 			try 
 			{
 				SocketCliente c= new SocketCliente();

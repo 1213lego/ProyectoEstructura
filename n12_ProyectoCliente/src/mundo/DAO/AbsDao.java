@@ -1,6 +1,5 @@
 package mundo.DAO;
 
-import org.omg.PortableServer.IdAssignmentPolicy;
 
 import MyList.MyList;
 import mundo.DTO.DepartamentosDTO;
