@@ -40,7 +40,7 @@ public class Servidor
 		DBConexion con= new DBConexion(url,user,pass);
 		while(true)
 		{
-			Socket canal= server.accept();
+			Socket canal= server.accept();			
 			ServidorHilo cliente= new ServidorHilo(canal, con );
 			cliente.start();
 		}

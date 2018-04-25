@@ -8,43 +8,45 @@ import MyList.MyList;
 import mundo.DAO.DepartamentoDao;
 import mundo.DTO.DepartamentosDTO;
 import mundo.DTO.IDto;
+import mundo.DTO.PropietarioDTO;
 import mundo.client.SocketCliente;
 import mundo.facade.DepartamentoFacade;
+import mundo.facade.PropietarioFacade;
 
 public class Controlador 
 {
-	private DepartamentoFacade df;
+	private PropietarioFacade df;
 	private SocketCliente sc;
 	public Controlador() throws UnknownHostException, IOException, InstantiationException, IllegalAccessException 
 	{
 		sc=new SocketCliente();
-		df= new DepartamentoFacade(sc);
+		df= new PropietarioFacade(sc);
 	}
 	public boolean elimnarDpt() throws InstantiationException, IllegalAccessException
 	{
-		DepartamentosDTO ss= new DepartamentosDTO(16, "Cundinamarca");
-		return df.eliminar(ss);
+		PropietarioDTO p= new PropietarioDTO("111111111");
+		return df.eliminar(p);
 	}
 	public MyList<IDto> consultarTodosDpt ()
 	{
-		DepartamentosDTO dpt= new DepartamentosDTO();
-		MyList<IDto> result= df.consultarTodos(dpt);
+		PropietarioDTO p= new PropietarioDTO("");
+		MyList<IDto> result= df.consultarTodos(p);
 		return result;
 	}
 	public IDto consultarpoPk()
 	{
-		DepartamentosDTO ss= new DepartamentosDTO(38, "Cundinamarca");
-		return df.consultarPk(ss);
+		PropietarioDTO p= new PropietarioDTO("3333333");
+		return df.consultarPk(p);
 	}
 	public boolean insertar()
 	{
-		DepartamentosDTO dpt= new DepartamentosDTO(54, "nuevoo");
-		return df.insertar(dpt);
+		PropietarioDTO p= new PropietarioDTO("Nuevo", "nuevo", "nuevo", "nuevo", "nuevo");
+		return df.insertar(p);
 	}
 	public boolean actulizar()
 	{
-		DepartamentosDTO dpt= new DepartamentosDTO(15, "update44");
-		return df.actualizar(dpt);
+		PropietarioDTO p= new PropietarioDTO("4444444", "ac", "ac", "ac", "ac");
+		return df.actualizar(p);
 	}
 	public static void main(String[] args) 
 	{

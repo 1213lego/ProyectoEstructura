@@ -25,10 +25,10 @@ public abstract class AbsDao<T extends IDto> implements IDao<T>
 	}
 
 	@Override
-	public IDto consultarPk(SocketCliente sc, T dto) 
+	public T consultarPk(SocketCliente sc, T dto) 
 	{
-		MyList<IDto> result=  sc.ejecutaConsulta(dto.consultarPk());
-		IDto idto= null;
+		MyList<T> result=  (MyList<T>) sc.ejecutaConsulta(dto.consultarPk());
+		T idto= null;
 		if(result.darTamanio()==1)
 		{
 			idto=result.dar(0);
