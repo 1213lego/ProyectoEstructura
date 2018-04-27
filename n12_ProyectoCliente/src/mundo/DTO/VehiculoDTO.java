@@ -8,10 +8,10 @@ public class VehiculoDTO implements IDto , Serializable
 	private String placa;
 	private String cedulaPropietario;
 	private String marca;
-	private int modelo;
+	private Long modelo;
 	private String tipoVehiculo;
 	private int cantidadPasajero;
-	public VehiculoDTO(String placa, String cedulaPropietario, String marca, int modelo, String tipoVehiculo,
+	public VehiculoDTO(String placa, String cedulaPropietario, String marca, Long modelo, String tipoVehiculo,
 			int cantidadPasajero) 
 	{
 		this.placa = placa;
@@ -20,6 +20,10 @@ public class VehiculoDTO implements IDto , Serializable
 		this.modelo = modelo;
 		this.tipoVehiculo = tipoVehiculo;
 		this.cantidadPasajero = cantidadPasajero;
+	}
+	public VehiculoDTO() 
+	{
+		// TODO Auto-generated constructor stub
 	}
 	public VehiculoDTO(String placa) 
 	{
@@ -43,10 +47,10 @@ public class VehiculoDTO implements IDto , Serializable
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public int getModelo() {
+	public Long getModelo() {
 		return modelo;
 	}
-	public void setModelo(int modelo) {
+	public void setModelo(Long modelo) {
 		this.modelo = modelo;
 	}
 	public String getTipoVehiculo() {

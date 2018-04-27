@@ -19,6 +19,10 @@ public class PropietarioDTO implements IDto, Serializable
 		this.primerApellido = primerApellido;
 		this.segundoApellido = segundoApellido;
 	}
+	public PropietarioDTO() 
+	{
+		// TODO Auto-generated constructor stub
+	}
 	public PropietarioDTO(String cedulaPropietario) 
 	{
 		this.cedulaPropietario=cedulaPropietario;

@@ -1,17 +1,11 @@
 package mundo.Servidor.Reflection;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.Iterator;
 
 import mundo.DTO.IDto;
 import mundo.Servidor.DBConexion;
@@ -54,7 +48,10 @@ public class ReflectionDTO
 		}
 		return result;
 	}
-	
+	public void ejecutar(Method metodo, IDto ss, Object parametro)
+	{
+		Class<?> [] tipoParametro=metodo.getParameterTypes();
+	}
 	private static Method buscarElMetodo(String nombreColumna, Method [] metodos)
 	{
 		Method result=null;		

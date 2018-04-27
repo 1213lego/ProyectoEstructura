@@ -9,44 +9,46 @@ import mundo.DAO.DepartamentoDao;
 import mundo.DTO.DepartamentosDTO;
 import mundo.DTO.IDto;
 import mundo.DTO.PropietarioDTO;
+import mundo.DTO.VehiculoDTO;
 import mundo.client.SocketCliente;
 import mundo.facade.DepartamentoFacade;
 import mundo.facade.PropietarioFacade;
+import mundo.facade.VehiculoFacade;
 
 public class Controlador 
 {
-	private PropietarioFacade df;
+	private VehiculoFacade df;
 	private SocketCliente sc;
 	public Controlador() throws UnknownHostException, IOException, InstantiationException, IllegalAccessException 
 	{
 		sc=new SocketCliente();
-		df= new PropietarioFacade(sc);
+		df= new VehiculoFacade(sc);
 	}
 	public boolean elimnarDpt() throws InstantiationException, IllegalAccessException
 	{
-		PropietarioDTO p= new PropietarioDTO("111111111");
-		return df.eliminar(p);
+		VehiculoDTO v= new VehiculoDTO("aaa123");
+		return df.eliminar(v);
 	}
 	public MyList<IDto> consultarTodosDpt ()
 	{
-		PropietarioDTO p= new PropietarioDTO("");
-		MyList<IDto> result= df.consultarTodos(p);
+		VehiculoDTO v= new VehiculoDTO("aaa123");
+		MyList<IDto> result= df.consultarTodos(v);
 		return result;
 	}
 	public IDto consultarpoPk()
 	{
-		PropietarioDTO p= new PropietarioDTO("3333333");
-		return df.consultarPk(p);
+		VehiculoDTO v= new VehiculoDTO("ccc123");
+		return df.consultarPk(v);
 	}
 	public boolean insertar()
 	{
-		PropietarioDTO p= new PropietarioDTO("Nuevo", "nuevo", "nuevo", "nuevo", "nuevo");
-		return df.insertar(p);
+		VehiculoDTO v= new VehiculoDTO("nuevo", "Nuevo", "nuevo",(long) 12 ,"nuevo", 12);
+		return df.insertar(v);
 	}
 	public boolean actulizar()
 	{
-		PropietarioDTO p= new PropietarioDTO("4444444", "ac", "ac", "ac", "ac");
-		return df.actualizar(p);
+		VehiculoDTO v= new VehiculoDTO("bbb123", "111111111", "up",(long) 1111 ,"up", 1111);
+		return df.actualizar(v);
 	}
 	public static void main(String[] args) 
 	{
@@ -63,7 +65,6 @@ public class Controlador
 			{
 				System.out.println(iter.next().toString());
 			}
-			
 		} 
 		catch (IOException | InstantiationException | IllegalAccessException e) 
 		{
