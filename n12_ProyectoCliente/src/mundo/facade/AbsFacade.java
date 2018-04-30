@@ -2,7 +2,7 @@ package mundo.facade;
 import MyList.MyList;
 import mundo.DAO.AbsDao;
 import mundo.DTO.IDto;
-import mundo.client.SocketCliente;
+import mundo.SocketCliente.SocketCliente;
 
 public abstract class AbsFacade <T extends AbsDao, X extends IDto>
 {
@@ -32,13 +32,13 @@ public abstract class AbsFacade <T extends AbsDao, X extends IDto>
 		return dao.eliminar(sc, idto);
 	}
 	
-	public MyList<IDto> consultarTodos ( X idto)
+	public MyList<X> consultarTodos ( X idto)
 	{
-		MyList<IDto> result= dao.consultarTodos(sc, idto);
+		MyList<X> result= dao.consultarTodos(sc, idto);
 		return result;
 	}	
-	public IDto consultarPk(X dto) 
+	public X consultarPk(X dto) 
 	{
-		return dao.consultarPk(sc, dto);
+		return (X) dao.consultarPk(sc, dto);
 	}
 }

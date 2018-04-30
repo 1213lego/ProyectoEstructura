@@ -21,7 +21,6 @@ public class PropietarioDTO implements IDto, Serializable
 	}
 	public PropietarioDTO() 
 	{
-		// TODO Auto-generated constructor stub
 	}
 	public PropietarioDTO(String cedulaPropietario) 
 	{

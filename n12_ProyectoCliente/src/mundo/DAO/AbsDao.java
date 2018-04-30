@@ -2,9 +2,8 @@ package mundo.DAO;
 
 
 import MyList.MyList;
-import mundo.DTO.DepartamentosDTO;
 import mundo.DTO.IDto;
-import mundo.client.SocketCliente;
+import mundo.SocketCliente.SocketCliente;
 
 public abstract class AbsDao<T extends IDto> implements IDao<T>
 {
@@ -27,7 +26,7 @@ public abstract class AbsDao<T extends IDto> implements IDao<T>
 	@Override
 	public T consultarPk(SocketCliente sc, T dto) 
 	{
-		MyList<T> result=  (MyList<T>) sc.ejecutaConsulta(dto.consultarPk());
+ 		MyList<T> result=  (MyList<T>) sc.ejecutaConsulta(dto.consultarPk());
 		T idto= null;
 		if(result.darTamanio()==1)
 		{

@@ -48,10 +48,7 @@ public class ReflectionDTO
 		}
 		return result;
 	}
-	public void ejecutar(Method metodo, IDto ss, Object parametro)
-	{
-		Class<?> [] tipoParametro=metodo.getParameterTypes();
-	}
+	
 	private static Method buscarElMetodo(String nombreColumna, Method [] metodos)
 	{
 		Method result=null;		

@@ -2,7 +2,7 @@ package mundo.facade;
 
 import mundo.DAO.VehiculoDao;
 import mundo.DTO.VehiculoDTO;
-import mundo.client.SocketCliente;
+import mundo.SocketCliente.SocketCliente;
 
 public class VehiculoFacade extends AbsFacade<VehiculoDao, VehiculoDTO>
 {

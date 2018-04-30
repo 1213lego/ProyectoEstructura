@@ -1,4 +1,4 @@
-package mundo.client;
+package mundo.SocketCliente;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 
 import MyList.MyList;
 import mensaje.SentenciaSQL;
-import mundo.DTO.DepartamentosDTO;
 import mundo.DTO.IDto;
 
 
@@ -43,7 +42,7 @@ public class SocketCliente
 	
 	public MyList<IDto> ejecutaConsulta(String instruccion)
 	{
-		MyList<IDto> result= null;
+		MyList<IDto> result= new MyList<IDto>();
 		SentenciaSQL consulta= new SentenciaSQL(instruccion);
 		try 
 		{
@@ -52,7 +51,7 @@ public class SocketCliente
 		} 
 		catch (IOException e) 
 		{
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "No hay conexion con el servidor");
 		} 
 		catch (ClassNotFoundException e) 
 		{
@@ -75,8 +74,7 @@ public class SocketCliente
 		} 
 		catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "No hay conexion con el servidor");
 		} 
 		catch (ClassNotFoundException e) 
 		{
@@ -85,33 +83,4 @@ public class SocketCliente
 		}
 		return result;
 	}
-
-	public static void main(String[] args) 
-	{
-		
-			JOptionPane.showMessageDialog(null,"Iniciando cliente");
-			try 
-			{
-				SocketCliente c= new SocketCliente();
-				DepartamentosDTO dto= new DepartamentosDTO();
-				MyList<IDto>  lista= c.ejecutaConsulta(dto.consultarTodos());
-				Iterator<IDto> iter= lista.iterator();
-				while(iter.hasNext())
-				{
-					System.out.println(iter.next().toString());
-				}
-				DepartamentosDTO dto1= new DepartamentosDTO(122,"kkkk");
-				boolean result=c.ejecutaActualizacion(dto1.insertar());
-				System.out.println(result);
-			} 
-			catch (IOException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			DepartamentosDTO dto= new DepartamentosDTO();
-			
-		
-	}
-
 }

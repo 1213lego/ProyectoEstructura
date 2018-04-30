@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 
 import org.firebirdsql.jdbc.parser.JaybirdSqlParser.statement_return;
 
+import mensaje.Usuario;
+
 /**
  * @author SALAS
  *
@@ -29,18 +31,12 @@ public class DBConexion
 	 * @param url ruta de la base de datos. url != null
 	 * @param usuario usuario a conectar en la base de datos. usuario != null
 	 * @param clave password del usuario. clave != null
+	 * @throws SQLException 
 	 * @throws ServidorException 
 	 */
-	public DBConexion(String url, String usuario, String clave) 
+	public DBConexion(String url, String usuario, String clave) throws SQLException 
 	{
-		try 
-		{
-			con= DriverManager.getConnection(url, usuario, clave);
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
-		}
+		con= DriverManager.getConnection(url, usuario, clave);
 	}
 
 	public Connection getCon() 

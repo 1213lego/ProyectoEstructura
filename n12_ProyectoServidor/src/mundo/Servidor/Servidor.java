@@ -24,6 +24,10 @@ public class Servidor
 	private String pass;
 	public Servidor() throws IOException 
 	{
+		cargarServidor();
+	}	
+	public void cargarServidor() throws IOException
+	{
 		FileInputStream archivo= new FileInputStream("data/servidor.properties");
 		Properties prop;
 		prop = new Properties();
@@ -32,11 +36,19 @@ public class Servidor
 		url= prop.getProperty("url");
 		user=prop.getProperty("user");
 		pass=prop.getProperty("pass");
-	}	
+		try
+		{
+			server= new ServerSocket(puerto);
+		}
+		catch (Exception e) 
+		{
+			prop.setProperty("puerto", Integer.toString(puerto+1));
+			puerto= Integer.parseInt(prop.getProperty("puerto"));
+			server= new ServerSocket(puerto);
+		}
+	}
 	public void recibirCliente() throws Exception
-	{
-		
-		server= new ServerSocket(puerto);
+	{				
 		DBConexion con= new DBConexion(url,user,pass);
 		while(true)
 		{
@@ -46,19 +58,6 @@ public class Servidor
 		}
 	}
 	
-	public void run() 
-	{
-		// TODO Auto-generated method stub
-		try 
-		{
-			recibirCliente();
-		} 
-		catch (Exception e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	public static void main(String[] args) 
 	{
 		JOptionPane.showMessageDialog(null,"server");

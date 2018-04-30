@@ -29,16 +29,13 @@ public class ServidorHilo extends Thread
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
 	private DBConexion conexionDB;
-
-	
 	public ServidorHilo(Socket socket, DBConexion con) throws Exception 
 	{	
 		canal= socket;
 		out= new ObjectOutputStream(canal.getOutputStream());
 		in= new ObjectInputStream(canal.getInputStream());	
 		conexionDB=con;
-	}
-	
+	}	
 	public void atenderCliente() 
 	{		
 		boolean continua=false;
@@ -49,7 +46,7 @@ public class ServidorHilo extends Thread
 				Object objeto= in.readObject();
 				SentenciaSQL sentenciaSQL= (SentenciaSQL) objeto;
 				String linea= sentenciaSQL.getSentencia();
-				if(linea.substring(0, 6).equals(CONSULTA))
+				if(linea.substring(0, 6).equalsIgnoreCase(CONSULTA))
 				{
 					ResultSet rs= conexionDB.ejecutaConsulta(linea);
 					MyList<IDto> lista= new MyList<IDto>();
@@ -91,7 +88,6 @@ public class ServidorHilo extends Thread
 			catch (IOException e) 
 			{
 				continua= true;
-				e.printStackTrace();
 			}
 			finally 
 			{

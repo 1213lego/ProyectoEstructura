@@ -2,7 +2,7 @@ package mundo.facade;
 
 import mundo.DAO.PropietarioDao;
 import mundo.DTO.PropietarioDTO;
-import mundo.client.SocketCliente;
+import mundo.SocketCliente.SocketCliente;
 
 public class PropietarioFacade extends AbsFacade<PropietarioDao	,PropietarioDTO>
 {

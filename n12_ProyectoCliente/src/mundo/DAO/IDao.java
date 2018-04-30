@@ -2,7 +2,7 @@ package mundo.DAO;
 
 import MyList.MyList;
 import mundo.DTO.IDto;
-import mundo.client.SocketCliente;
+import mundo.SocketCliente.SocketCliente;
 
 public interface IDao <T extends IDto>
 {
