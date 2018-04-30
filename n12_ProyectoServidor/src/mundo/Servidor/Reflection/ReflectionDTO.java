@@ -15,7 +15,7 @@ public class ReflectionDTO
 {
 	public static final String PAQUETE= "mundo.DTO.";
 	
-	public static MyList<IDto> listar(ResultSet rs)  
+	public  MyList<IDto> listar(ResultSet rs)  
 	{
 		MyList<IDto> result= new MyList<>();		
 		try
@@ -49,7 +49,7 @@ public class ReflectionDTO
 		return result;
 	}
 	
-	private static Method buscarElMetodo(String nombreColumna, Method [] metodos)
+	private Method buscarElMetodo(String nombreColumna, Method [] metodos)
 	{
 		Method result=null;		
 		nombreColumna= nombreColumna.replaceAll("_", "");

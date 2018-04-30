@@ -83,4 +83,10 @@ public class SocketCliente
 		}
 		return result;
 	}
+	public void cerrarConexiones() throws IOException
+	{
+		out.close();
+		in.close();
+		canal.close();
+	}
 }

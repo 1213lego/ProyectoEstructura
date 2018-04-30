@@ -52,7 +52,8 @@ public class ServidorHilo extends Thread
 					MyList<IDto> lista= new MyList<IDto>();
 					if(rs!=null)
 					{
-						lista= ReflectionDTO.listar(rs);
+						ReflectionDTO r=new ReflectionDTO();
+						lista= r.listar(rs);
 						out.writeObject(lista);
 					}
 					else

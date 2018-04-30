@@ -339,6 +339,12 @@ public class Controlador implements ActionListener
 		else if(comand.equals(InterfazPrincipal.SALIR))
 		{
 			ip.salir();
+			try {
+				sc.cerrarConexiones();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			sc=null;
 		}
 	}

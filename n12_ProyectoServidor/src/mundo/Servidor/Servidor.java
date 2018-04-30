@@ -38,21 +38,24 @@ public class Servidor
 		pass=prop.getProperty("pass");
 		try
 		{
+			System.out.println("Se ha iniciado el servidor");
 			server= new ServerSocket(puerto);
 		}
 		catch (Exception e) 
 		{
 			prop.setProperty("puerto", Integer.toString(puerto+1));
 			puerto= Integer.parseInt(prop.getProperty("puerto"));
-			server= new ServerSocket(puerto);
+			server= new ServerSocket(puerto);			
 		}
 	}
 	public void recibirCliente() throws Exception
-	{				
+	{			
+		int clientes=0;
 		DBConexion con= new DBConexion(url,user,pass);
 		while(true)
 		{
-			Socket canal= server.accept();			
+			Socket canal= server.accept();
+			System.out.println("nuevo cliente, se han conectado: " + (clientes =clientes+1) + " cliente");
 			ServidorHilo cliente= new ServidorHilo(canal, con );
 			cliente.start();
 		}
@@ -60,7 +63,6 @@ public class Servidor
 	
 	public static void main(String[] args) 
 	{
-		JOptionPane.showMessageDialog(null,"server");
 		try 
 		{
 			Servidor server= new Servidor();
