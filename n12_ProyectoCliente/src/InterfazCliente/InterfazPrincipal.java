@@ -5,9 +5,13 @@
  */
 package InterfazCliente;
 
+import java.net.SocketException;
+
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+
+import controlador.Controlador;
 
 /**
  *
@@ -524,6 +528,10 @@ public class InterfazPrincipal extends javax.swing.JFrame
     public String solicitarDato(String mensaje)
     {
     	String dato= JOptionPane.showInputDialog(mensaje);
+    	if(dato==null)
+    	{
+    		dato= "";
+    	}
     	return dato;
     }
     public void asignarModelosTablaPropietarios(String [] nombreColumnas)
@@ -588,4 +596,55 @@ public class InterfazPrincipal extends javax.swing.JFrame
     // End of variables declaration//GEN-END:variables
     public DefaultTableModel modelTablaPropietarios;
     public DefaultTableModel modelTablaVehiculos;
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InterfazPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+            	InterfazPrincipal ip;
+        		Controlador ss;
+        		try 
+        		{
+        			ip= new InterfazPrincipal();
+        			ss= new Controlador(ip);		
+        		}		
+        		catch (SocketException e) 
+        		{
+        			JOptionPane.showMessageDialog(null, "Se ha perdido la conexion con el servidor");
+        			System.exit(0);
+        		} 
+        		catch (Exception e) 
+        		{
+        			e.printStackTrace();
+        		} 
+            }
+        });
+    }
 }

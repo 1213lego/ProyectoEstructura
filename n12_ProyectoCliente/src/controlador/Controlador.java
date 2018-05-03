@@ -133,7 +133,7 @@ public class Controlador implements ActionListener
 		}
 		else
 		{
-			ip.mostrarMensaje("No ha ingresado la cedula/n"
+			ip.mostrarMensaje("No ha ingresado la cedula\n"
 					+ "la cedula debe tener maximo 15 caracteres");
 		}
 	}
@@ -347,26 +347,6 @@ public class Controlador implements ActionListener
 			}
 			sc=null;
 		}
-	}
-	public static void main(String[] args) 
-	{
-		InterfazPrincipal ip;
-		Controlador ss;
-		try 
-		{
-			ip= new InterfazPrincipal();
-			System.out.println();
-			ss= new Controlador(ip);		
-		}		
-		catch (SocketException e) 
-		{
-			JOptionPane.showMessageDialog(null, "Se ha perdido la conexion con el servidor");
-			System.exit(0);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		} 
 	}
 
 }
