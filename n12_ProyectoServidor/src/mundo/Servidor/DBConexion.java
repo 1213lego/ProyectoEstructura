@@ -36,7 +36,7 @@ public class DBConexion
 	 */
 	public DBConexion(String url, String usuario, String clave) throws SQLException 
 	{
-		con= DriverManager.getConnection(url, usuario, clave);
+		con= DriverManager.getConnection("jdbc:firebirdsql://localhost:3050/"+url, usuario, clave);
 	}
 
 	public Connection getCon() 

@@ -1,0 +1,11 @@
+Nota- la base de datos se encuentra la carpeta lib del proyecto llamado "Servidor"
+1.Importe el proyecto llamado "servidor" a eclipse.
+2.Abra el archivo de propiedades llamado "servidor.properties" 
+2.1 cambie la propiedad url por la ruta de la base de datos que se encuentra en la carpeta lib del proyecto servidor
+2.2 cambie la propiedad puerto por el puerto que desee 
+3. para inciar el servidor inicie la clase Servidor que se encuentra en el paquete mundo.Servidor
+Para iniciar cliente:
+1.Importe el proyecto llamado "Cliente" a eclipse
+2.Abra el archivo de propiedades llamado "servidor.properties" 
+2.1 verique que la ip y el puerto sean los del servidor que inicio anteriormente
+3 inicie los clientes que desee, para inciar el cliente inicie la clase InterfazPrincipal del paquete interfazCliente
